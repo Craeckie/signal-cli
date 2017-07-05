@@ -10,9 +10,9 @@ class JsonSyncMessage {
     List<String> blockedNumbers;
     List<ReadMessage> readMessages;
 
-    JsonSyncMessage(SignalServiceSyncMessage syncMessage) {
+    JsonSyncMessage(SignalServiceSyncMessage syncMessage, Manager m) {
         if (syncMessage.getSent().isPresent()) {
-            this.sentMessage = new JsonDataMessage(syncMessage.getSent().get().getMessage());
+            this.sentMessage = new JsonDataMessage(syncMessage.getSent().get().getMessage(), m);
         }
         if (syncMessage.getBlockedList().isPresent()) {
             this.blockedNumbers = syncMessage.getBlockedList().get().getNumbers();
